@@ -1,4 +1,13 @@
 
+## How to connect with the linux ec2 machines created in the AWS Cloud:
+
+  * You will get the public IP of the machines and through that IP , you can connect from anywhere .
+
+  ![alt text](image.png)
+
+  * __instance :__ t2.micro
+
+  * __Default User:__ ec2-user
 
 ## Jenkins Server Credentials :
 
