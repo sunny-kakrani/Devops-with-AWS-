@@ -565,8 +565,90 @@ pipeline {
 
    * Create Pipeline & use __Shared Libraries.__
 
-   __NOTE:__ It internally searches for call() method in the Groovy File.
+   * Refer the below Git URL to see the groovy files.
+
+     * https://github.com/ashokitschool/my_shared_libraries.git
+
+   __NOTE:__ <mark>It internally searches for call() method in the Groovy File.
+
+```
+@Library('ashokit_shared_lib') _
+
+pipeline {
+    agent any
+    
+    tools{
+        maven "maven-3.9.8"
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+               welcome()
+            }
+        }
+
+        stage('git clone'){
+        	steps{
+        		gitClone()  // Coming from Shared Library
+        	}
+        }
+
+        stage('maven build'){
+        	steps{
+        		mavenBuild()  // Coming from Shared Library
+        	}
+        }
+
+        stage('Code Review'){
+          steps{
+            sonarQube()   // Coming from Shared Library
+          }
+        }
+    }
+}
+```
  
+## What is Jenkins File ?
+
+In that file, we write the pipeline code and that file will be checked-in into the code , while configuring the Job in the jenkins we can choose __Pipeline Project -> Pipeline Script from SCM__ 
+
+__NOTE:__ Each branch in the Git Repository will be having it's own Jenkinsfile.
+
+## Exception handling in the pipeline Job's:
+
+* If any stage fails in the pipeline , all the remaining stages after that will not perform its activity due to earlier failure .   <mark>__If we don't want abnormal termination__</mark>, It is better to use the exception handling in the pipeline Job's.
 
 
+  *  ![alt text](image-16.png)
+
+
+## Multibranch Pipeline:
+
+  * Multibranch Pipeline is used to build the code from multiple git branches at a time.
+
+     * main branch
+     * develop branch
+     * feature branch
+     * release branch
+
+__NOTE:__ <mark>Every branch will have its own __'Jenkinsfile'__
+
+* Create the multibranch pipeline project from Jenkins and configure the details there ( You can include all the branches & exclude the branches as well)
+
+
+* When we click on __Scan Multibranch Pipeline Now__ , it will build the branches if there are any code changes in the branches.
+
+
+__NOTE:__ <mark>__By using the Multibranch Pipeline concept , we can create only pipeline for multiple branches.__
+
+## How to take Jenkins Backup ?
+
+* Using "Thin Backup Plugin" we can backup our jenkins configuration and we can restore .
+
+  __NOTE:__ After restoring , just restart the Jenkins Server.
+
+     * URL : http://public-ip:8080/restart
+
+__NOTE:__ We will take the backup of only Jenkins Master Machine (Because every job details is stored in the master machine , slave machine is just a dummy box where our job will run)
 
