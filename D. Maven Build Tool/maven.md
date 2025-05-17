@@ -255,7 +255,7 @@ __NOTE :__  When we add dependency , maven will download dependency from Maven R
 
  
 
-* Central repository is maintaining by Apache organization 
+* Central repositgit story is maintaining by Apache organization 
 
 * every company will maintain their own remote repository (Ex: Nexus, JFrog) 
 
@@ -270,3 +270,7 @@ __NOTE :__  When we add dependency , maven will download dependency from Maven R
 __NOTE:__ By default maven will connect with central repository. If we want to use remote repository then we need to configure remote repository details. 
  
 __NOTE:__ Every software company will maintain their own remote repositories (Ex: Nexus / JFrog) 
+
+## Real Time Scenarios :
+
+__NOTE:__ <mark> Sometime dependencies come as a transitive dependency , so excluding them from your dependencies file , can cause cause issue at run time saying __ClassNotFoundException.__ 
