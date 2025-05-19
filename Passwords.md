@@ -3,11 +3,25 @@
 
   * You will get the public IP of the machines and through that IP , you can connect from anywhere .
 
-  ![alt text](image.png)
+  ![alt text](A.%20Basic%20Devops/connect.png)
 
   * __instance :__ t2.micro
 
   * __Default User:__ ec2-user
+
+## Nexus Server Credentials:
+
+* __instance__ : t2.medium
+
+* __Default User__ : ec2-user
+
+* __username__ : admin
+
+* __password__ : admin
+
+* __port__ : 8081
+
+__NOTE:__ <mark>__When the machine is up in the EC2 -Instance . No need to start the nexus via executing some commands . You can directly access nexus server with the IP and Port.__</mark>
 
 ## Jenkins Server Credentials :
 

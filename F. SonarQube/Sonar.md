@@ -12,15 +12,15 @@
 
  ## Sonar Issues :
 
-  * __Bugs__ : Critical Issue , we need to fix immediately 
+  * __Bugs__ : Critical Issue __like <mark>NullPointerException.__
 
-  * __Vulnerabilities__ : Security Issues 
+  * __Vulnerabilities__ : Security Issues , Any Private data 
 
   * __Code Smells__ : Functionality will work , but we can make it better 
 
   * __Duplicate Code__ : Repeated Code 
 
-  * __Code Coverage__ : How many lines of code is tested in unit testing.
+  * __Code Coverage__ : It displays the test coverage report .
 
 > Every Client asks for Code Review Report . Without having the Code Review Report , Client will not accept our project .
 
@@ -32,11 +32,13 @@
 
 * __Code Review__ : Checking Coding Conventions/Bugs/Vulnerabilities/Duplicate Code etc .
 
-> Code Review will happen before deploying our project . Code Review will not happen with the JAR / WAR . It will go to our code and check each and every line of our code , but it expects the classes to be __compiled__ that's why We do the code review part after the packaging in the form of JAR/WAR .
+> Code Review will happen before deploying our project . Code Review does not happen on the JAR / WAR . It will go to our code and check each and every line of our code , but it expects the classes to be __compiled__ that's why We do the code review part after the packaging in the form of JAR/WAR .
 
 > If the code review is good then only we store the artifacts into the Nexus Server .
 
 > Web Application will be packaged as WAR file . Inside our web application we can use the shared library as a JAR file .
+
+__NOTE :__  <mark>__SonarQube does not run tests or measure coverage itself.It expects us to generate the test coverage report (with JaCoCo, Cobertura, Istanbul, etc.) , It will be able to show us the test coverage report.__</mark>
 
  ## SonarQube Setup :
 
@@ -45,6 +47,8 @@
 * Java Software is required to install SonarQube. 
 
 * Connect to t2.medium instance using Mobaxterm.
+
+__NOTE:__ We can set up the Sonar Server as a Docker Container also.
 
 ## SonarQube server installation process in Amazon Linux OS .
 
