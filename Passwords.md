@@ -41,18 +41,6 @@ __NOTE:__ <mark>__When we shut down the EC2 machine in which Sonar Server is run
 
 __NOTE:__<mark> __When the ec2 machine gets restarted , Public IP will change and we have to use that new Public IP where we are making the connection.__<mark>
 
-## Jenkins Server Credentials :
-
-  * __instance__ : t2.medium 
-  
-  * __Default User__ : ubuntu 
-
-  * __username__ : admin
-
-  * __password__ : admin
-
-  * __port__ : 8080
-
 ##  Tomcat Server Credentials :
 
  * __instance__ : t2.micro
@@ -66,5 +54,18 @@ __NOTE:__<mark> __When the ec2 machine gets restarted , Public IP will change an
   * __port__ : 8080
 
 __NOTE: <mark> When the machine comes up in AWS, the public IP gets changed & we need to restart the Tomcat Server by calling sh startup.sh__
+
+## Jenkins Server Credentials :
+
+  * __instance__ : t2.medium 
+  
+  * __Default User__ : ubuntu 
+
+  * __username__ : admin
+
+  * __password__ : admin
+
+  * __port__ : 8080
+
 
 

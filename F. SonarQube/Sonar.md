@@ -221,7 +221,7 @@ __Note:__ If we have any common ruleset for all projects then we can create one 
 
 > __We can create Project Specific Quality Profiles also .__
 
-## Quality Gate :
+## Quality Gate in the SonarQube :
 
 * Quality Gate represents set of metrics to identify project quality is Passed or Failed
 

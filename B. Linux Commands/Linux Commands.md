@@ -626,6 +626,8 @@ __kill PID__ [Give the process id , It will kill the process in the background]
 
 * __<mark>jar file content can be seen by renaming the jar with zip and you can unzip the file to see the content in the jar.__ 
 
+* __dos2unix (This command is heavily used)__
+
 
 __NOTE: Sometimes when you see the issue , that this port is in use that means there is some service which is already running on that port. You have to kill that process and check that properly,__ <mark>Sometimes even after killing the process , it again starts running on that port , In that case you have to stop the service.
  
