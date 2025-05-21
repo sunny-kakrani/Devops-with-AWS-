@@ -48,7 +48,11 @@ __NOTE :__  <mark>__SonarQube does not run tests or measure coverage itself.It e
 
 * Connect to t2.medium instance using Mobaxterm.
 
-__NOTE:__ We can set up the Sonar Server as a Docker Container also.
+__NOTE: <mark> We can set up the Sonar Server as a Docker Container also.__
+
+__NOTE:__ <mark>__Sonar -Server can also be installed in the windows machine , we have to start the server here also by executing the bat file and it will run on 9000 port.__</mark>
+
+* http://localhost:9000
 
 ## SonarQube server installation process in Amazon Linux OS .
 
