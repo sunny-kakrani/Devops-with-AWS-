@@ -116,6 +116,8 @@
 
 * __git diff__ : It is used to display the differences between Working Tree and Central Repository .
 
+* __git gui__ : It is used to open the GIT-GUI editor .
+
 
 ## Git Branching :
 
@@ -123,21 +125,23 @@
 
 
 
-* __Steps to create the branch on the remote repository :__
+ __<mark>Steps to create the feature branch for your personal Jira :__
 
-  * Cut the __develop branch/ release branch__ from the __main__ branch in the remote repository .
+* Do the __git pull__ on the main branch and cut the feature branch by using the below command 
+   * __$ git branch feature__
 
-  * Do the __git pull__ to reflect the new branch that you have created on the Remote Repository in your Local Repository.
 
-  * Checkout to the newly created branch , it can be Develop/Release or any branch.
+* Checkout to the newly created feature branch , It can be feature or any branch.
     
-    * __$ git checkout develop__ [ Now you are present at the develop branch]
+    * __$ git checkout feature__ [ Now you are present at the feature branch]
 
-  * Do the changes , commit and push , It will be reflected in the develop branch .
+* Do the changes , commit and push , It will be reflected in the feature branch .
 
-  * Once everything looks fine in the develop branch , we can merge the develop branch into the main branch that is called __Branch Merging__ 
+* Once everything looks fine in the feature branch , we can merge the feature branch into the main branch that is called __Branch Merging__ 
 
-    __Pull Request :__ In order to do the branch merging in real time , we create the PR's (Pull Requests)
+<mark>__NOTE:__</mark>  __Once the branch is merged , We should delete that branch also from the Remote Repository.__
+
+ __Pull Request :__ In order to do the branch merging in real time , we create the PR's (Pull Requests)
 
 * __Git Branching Strategy :__
 
@@ -170,7 +174,8 @@ __NOTE :__ We can avoid the conflicts by using the fetch command
 
 ## How we can revert the commit from the Local Repository
 
-* If we commit anything in local then the branch is ahead of that a particular commit and we should push that change , but If want to revert that commit from the local repository we can use th below command .
+* If we commit anything in local then the branch is ahead of that a particular commit and we should push that change , but If want to revert that commit from the local repository we can use the below command.
+
 
    * __$ git reset --hard HEAD~2__ (We will go to 2 commits back in the local repository)
 
@@ -193,6 +198,22 @@ This command is used to save our working tree changes to a temporary area for th
 
    * __$ git stash apply__ : [All the preseved changes will come and we have to commit and push it according to our need]
 
+## What is git fork ?
+
+*  It is heavily used and we will do everything on this repo and syncing should be enabled between the actual repo and forked repo __(It is cloning the Repo in our own account)__
+
+## What is git patch ?
+
+* We can create the patch of our local changes and give it to anyone and can also take the patch of someone else's changes and include those changes in our local branch.
+
+## What is git cherry-pick ? 
+
+ * It is used to cherry pick only that commit which you want , instead of all the commits.
+
+__NOTE:__  Mainly cherry-pick is used for the bug fixes where we want to place that bugfix commit in all the version branches. It is also used when we accidentally made a commit in the wrong branch.
+
+ 
+
 
 ## Git Conflicts Issues:
 
@@ -200,19 +221,48 @@ This command is used to save our working tree changes to a temporary area for th
 
 * There is no automatic way to resolve the conflicts , We always manually resolve the conflicts.
 
-* __If conflict comes while during the pull in a specific branch , we need to follow the below steps:__
+__NOTE:__  First step is to take the latest pull on the main branch and then creature the feature branch.
 
-   * Resolve the conflicts manually .
-   
-   * After resolving the conflicts in the file , we need to stage the changes to mark the conflict as resolved by using the __git add__ command .
+  ### When the conflicts can come :
 
-   * use __git commit__ command , it will generate a commit message indicating the merge was successfull .
+  * __<mark>Case 1: When each and every developer is working on the same branch on the remote repo.(VERY RARE CASE)__ 
 
-   * use __git push__ now , because you have resolved the conflicts now .
+    When you are doing the git push and someone has updated the remote branch few mins ago . It will reject the push . It will say first take the pull of the branch 
+    
+      * __(If Merge Conflict comes, Resolve it -> add , commit and push)__
+
+      * __(If Merge Conflict does not come , do git push directly)__
+
+   * <mark>__Case 2: In case of raising the Pull Request (VERY POPULAR CASE) :__
+
+     If someone has updated remote branch , here also merge conflict can come. 
 
 
-__NOTE :__ In most of the cases we should not get conflicts when we are executing the commmand __git pull__ from the main branch , if conflict comes that means we are directly working on the main branch and doing the commits on that , we should not do like that , we should not disturb the main branch !!
+## Git 3 Branching Strategy :
 
+<mark> __Develop Branch -> Release Branch -> Master Branch -> Production Build.__ 
+
+### How release goes in production ? 
+
+  * Take the changes from develop to release .
+
+  * Run the regression tests on the release branch.
+
+  *   Push to production live.
+
+  * Monitor the live production build.(Once Monitoring completes , then update the master branch)
+
+### Case 1:  
+
+  * If we have pushed the code from release branch to production , and hotfix comes we can handle the hotfix on the release branch , run the regression on release brach , push the code to production , monitor it and back merge the develop and master branch .
+
+### Case 2: 
+
+
+*   Hotfix can come even in the live , while regression is happening on the release branch and code has not been pushed yet , in that case master branch can help us.
+
+
+__NOTE:__ master branch is exactly equivalent to the production env.
 
 ## Git merge and Git rebase :
 
@@ -223,7 +273,7 @@ __Merge__ and __REBASE__  both are used to integrate the changes from one branch
 
       * It preserves the non linear history of the commits and the new commit is added. 
 
-      __NOTE :__ "merge" is very recommended whenever you are working on a branch on which multiple engineers are contributing it . 
+      __<mark>NOTE :__ "merge" is very recommended whenever you are working on a branch on which multiple engineers are contributing it . 
 
       In the below example , suppose you are working on the feature branch and you have done multiple commits in the feature branch and parallely master is also getting updated by the peer developers . Now you want to test your functionality with all the changes that the developers have pushed into the master branch . In that case use __git merge master__  
       
@@ -247,4 +297,11 @@ __Merge__ and __REBASE__  both are used to integrate the changes from one branch
 
       __NOTE:__ Always use git rebase on a branch where you are working it and no-one else is contributing to it .
 
-      
+
+
+
+
+
+
+
+
