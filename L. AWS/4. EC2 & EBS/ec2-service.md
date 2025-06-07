@@ -1,106 +1,3 @@
-
-## Cloud Service Models :
-
-* __IAAS (Infrastructure as a Service)__ :
-
-  * Provider will give you the machines and network , we need to configure everything in order to run our business . 
-
-* __PAAS (Platform as a Service)__:
-
-  * Provider will give you the readymade platform , you just focus on your application development and you can execute your application on the platform given by the provider .
-
-* __SAAS (Software as a Service)__:
-
-  * Provider will give the readymade application to run our business (EX: Zoom , Google Drive etc)
-
-## What is AWS Cloud  ? 
-
-* Since 2006 ,  AWS is providing IT resources over internet on __Pay as you model.__
-
-* AWS is having global infrastructure ,  190+ countries across the globe are using the AWS Services .
-
-
-## Region's & Availability Zones & Infrastucture Creation :
-
-  * <mark>__Region : Geographical Location (32 regions)__
-
-  * <mark>__Availability Zone's : Data Center (Server Room) -> 102 Az's__
-
-  * Below are the different ways to create the infrastructure in the Cloud.
-
-    * __Web Console (GUI)__
-    * __AWS CLI__
-    * __Cloud Formation (YML/JSON)__
-    *  __Terraform (Supports Multiple Clouds)__
-
-        ![alt text](image-1.png)
-
-
-
-
-## AWS IAM (Identity & Access Management):
-
-* There are two types of accounts that we can see in AWS.
-
-  * __Root Account:__ : This account will have access for everything in AWS.
-
-  * __IAM Account:__ : We can manage the permissions in this account.
-
-* We should not use Root Account for our daily activities. (This Account is only used for the Billing Activities)
-
-* For daily activities , we are going to use __IAM Accounts.__
-
-* Every team member will get IAM Account to perform daily activities .
-
-* In IAM Account we can give permissions to access particular services in AWS Cloud.
-
-__NOTE:__ IAM is completely free service in AWS .
-
-__MultiFactor Authentication:__
-
-* It is used to provide additional security to the root account.
-
-* Enable MFA for root account using Google Authenticator app.
-
-* After enabling MFA, logout and login into root account and check behaviour.
-
-__IAM Users:__
-
-  * Create IAM User-Account and attach policies (RDSFullAcces, S3FullAccess)
-
-  * Login into IAM User-Account and from that user you wont be able to access EC2 service (because of no permission)
-
-__IAM User Group:__
-
-* Create the User Group 
-
-* Attach Policies to the Group .
-
-* Add Users to the Group.
-
-![alt text](image-9.png)
-
-![alt text](image-10.png)
-
-__NOTE:__ Its the responsibility of the Cloud Engineer to provide which user has the capability to access the AWS Cloud via __Console Access OR AccessKey -SecretKey.__
-
-<mark>__Permission at the Group Level is always recommended.__
-
-__NOTE:__ We can create our own policies also in the AWS Cloud. (<mark>__Policy= Set of Permissions__</mark>)
-
-* There can be two types of policies in the AWS Account :
-
-  * __AWS Managed Policy__
-  * __Customer Managed Policy__
-
-__IAM ROLE:__
-
-* IAM role is nothing, but set of Policies(<mark>__Role= Set of Policies__)
-
-  ![alt text](image-12.png)
-
-<mark>__Policies will be assigned to Users , and roles will be assigned to Services.__
-
 ## AWS EC2 (Elastic Compute Cloud):
 
 * It is Most demanded service in AWS
@@ -109,7 +6,7 @@ __IAM ROLE:__
 
 * EC2 VM is called as EC2 instance
 
-	__EC2 Instance__ = <mark>__Computer / Server / VM / Virtual Machine / Virtual Box__<mark>
+    __EC2 Instance__ = <mark>__Computer / Server / VM / Virtual Machine / Virtual Box__<mark>
 
 * EC2 instance is re-sizable (we can change configuration based on demand)
 
@@ -182,7 +79,7 @@ __Types of IP's:__
 
 __TASK -1 :__ 
 
-  * Create the Windows Virtual Machine and Connect through __RDP Client.__
+  * Create the Windows Virtual Machine and Connect through __RDP Client(Remote Desktop Connection) by entering the username and password__
 
     ![alt text](image-15.png)
 
@@ -240,15 +137,15 @@ __What are EBS Volume Types ??__
 
 * We have 5 types of EBS volumes
 
-	1) General Purpose (Min: 1 GiB, Max: 16384 GiB)
+    1) General Purpose (Min: 1 GiB, Max: 16384 GiB)
 
-	2) Provisioned IOPS (Min: 4 GiB, Max: 16384 GiB)
+    2) Provisioned IOPS (Min: 4 GiB, Max: 16384 GiB)
 
-	3) Cold HDD (Min: 125 GiB, Max: 16384 GiB)
+    3) Cold HDD (Min: 125 GiB, Max: 16384 GiB)
 
-	4) Throuput Optimized (Min: 125 GiB, Max: 16384 GiB)
+    4) Throuput Optimized (Min: 125 GiB, Max: 16384 GiB)
 
-	5) Magnetic (standard) (Min: 1 GiB, Max: 1024 GiB)
+    5) Magnetic (standard) (Min: 1 GiB, Max: 1024 GiB)
 
 * __Some important points about the Volumes:__
 
@@ -260,11 +157,11 @@ __What are EBS Volume Types ??__
    ![alt text](image-19.png)
 
 __<MARK>Lab Task on EBS Additional Volumes:__
-	
+    
 
 * Create EC2 VM (VM-1) (amazon linux ami) - we will get EBS root vol 8 GB
 
-* Create Additonal EBS Vol with 10 GB (check AZ)
+* Create Additonal EBS Vol with 10 GB __(check AZ's of the machine),__
 
 * Attach Additional Volume to EC2 VM-1
 
@@ -285,7 +182,7 @@ __NOTE:__ Now EC2 Vm-1 will have 2 EBS volumes __(root vol + additional vol)__
   * $ __cd ashokit__
 
   * $ __sudo touch f1.txt f2.txt__
-	
+    
 * Detach additional volume from EC2 VM-1
 
 * Create New EC2 VM (VM-2) and attach EBS additional volume to EC2 VM-2
@@ -303,7 +200,25 @@ __NOTE:__ Once practice is completed, detach additional volume and delete it to 
 
 
 
-__What are EBS Snapshots??__
+__<mark>What are EBS Snapshots??__
+
+* Snapshots are used for EBS Volume backup .
+
+* Snapshots are __region specific.__
+
+* From Volume, we can create Snapshots.
+
+* From Snapshots , we can create Volume.
+
+   ![alt text](image-5.png)
+
+__NOTE:__ Volumes can be attached to EC2 instances directly.
+
+__NOTE:__ We can't attach Snapshot to EC2 instances directly .
+
+<mark>Q. __How to copy data from one zone machine to another zone machine ??__
+
+  ![alt text](image-6.png)
 
 
 ## Static Website Hosting using EC2 instance:
@@ -392,7 +307,91 @@ __NOTE:__ To Overcome these issues , we will go for __Load Balancing.__
 * In AWS we have 4 types of Load Balancers:
 
    * __Application Load Balancer (ALB)__
-	* __Network Load Balancer (NLB)__
-	* __Gateway Load Balancer (GLB)__
-	* __Classic Load Balancer (previous generation)__
+    * __Network Load Balancer (NLB)__
+    * __Gateway Load Balancer (GLB)__
+    * __Classic Load Balancer (previous generation)__
+
+## Monolithic VS MicroServices Application :
+
+__<mark>Monolithic Architecture:__ All the functionalities __(trains , cabs , hotels , flights etc)__ will be implemented as a part of single project. 
+
+__Disadvantages of using the Monolithic Architecture:__
+
+  * __Single Point of Failure :__ If there is an issue in any of the functionality , Whole application won't work .
+
+  * __Redeployment :__ If there is a fix in the particular functionality , we need to deploy the whole application .
+
+![alt text](image.png)
+
+
+__<mark>MicroServices Architecture:__ All the functionalities will be implemented as a part of Separate Project .
+
+__Advantages of using the MicroServices Architecture:__
+
+  * __There won't be any single point of failure:__ If there is an issue in any of the functionality , rest of the functionalities can work .
+
+  * __No Redeployment:__ If there is a fix in a particular functionality , we will deploy that functionality only .
+
+    ![alt text](image-2.png)
+
+## Load-Balancer Setup in Monolithic Application :
+
+* __Create EC2 VM-1 with below user data:__
+
+```html
+#! /bin/bash
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 1</h1></html>" > index.html
+service httpd start
+```
+__NOTE:__ <mark>Enable the http protocol having port number 80 & SSH protocol having port number 22.
+* __Create EC2 VM-2 with below user data:__
+
+```html
+#! /bin/bash
+
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 2</h1></html>" > index.html
+service httpd start
+```
+__NOTE:__ <mark>Enable the http protocol having port number 80 & SSH protocol having port number 22.
+
+* __Add these 2 instances to one "Target Group"__
+
+
+* __Create Load Balancer with Target Group (ALB)__
+
+  * __Scheme :__ Internet Facing
+
+__NOTE:__  <mark>ALB runs on HTTP protocol with 80 port number (enable that port number in the security group)
+
+* __Access Load Balancer DNS in browser__ (It will route the requests to our servers in round robin fashion)
+
+    ![alt text](image-3.png)
+
+## Load Balancer Setup in Micro-Services Application :
+
+![alt text](image-4.png)
+
+* __We can create Multiple Target Groups corresponding to each Microservice (whether its flight microservice , hotels microservice , trains microservice) and we can configure the path based routing in the Load Balancer to route our requests.__
+
+  * http://makemytriplbr-460369493.ap-south-1.elb.amazonaws.com?type=flights __[For Re-Directing to the Flights API]__
+
+  * http://makemytriplbr-460369493.ap-south-1.elb.amazonaws.com?type=trains __[For Re-Directing to the Trains API]__
+
+## AutoScaling :
+
+* Increasing /Decreasing the resources based on demand is called Auto-Scaling .
+
+* Below are the advantages of using the AutoScaling.
+
+  * __Fault Tolerance.__
+
+  * __Availability.__
+
+  * __Cost Management.__
 

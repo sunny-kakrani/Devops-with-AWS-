@@ -13,7 +13,7 @@ __Application Architecture:__
 
 __NOTE:__ For every project , database is mandatory to store the data permanently.
 
-__Database Setup :__ 
+__Database Setup in Local Machine :__ 
 
   * We can download and install database in our local system to store the data permanently .
 
@@ -27,6 +27,12 @@ __Database Setup :__
     * __Disaster Recovery__
 
      To overcome the above challenges , we can use the Cloud Database giving by the Cloud Provider.
+
+__Database Setup in Remote Machine__ 
+
+
+ * Even if we install the database on the ec2 instance (Its like Remote Database) , then we have to manage everything by ourselves , instead of doing that, we always prefer the RDS Service.
+
 
 __What is AWS RDS ?__
 
@@ -43,7 +49,11 @@ __What is AWS RDS ?__
 
   * We are just responsible to create and use the database , the remaining things will be taken care by AWS Cloud .
 
+   
+
 __NOTE:__   AWS RDS is a paid service , It is chargeable based on the usage , AWS providing RDS based on <mark> __Pay As You Go Model.__</mark>
+
+
 
 __MYSQL DB Setup using AWS-RDS:__
 
@@ -81,6 +91,8 @@ __<MARK>Once database created , it will provide database connection properties._
 
 __NOTE:__ <MARK> __Enable 3306 in database Security Group Inbound Rules to allow the income traffic to access the database__</mark>
 
+* ![alt text](image-8.png)
+
 ![alt text](image-1.png)
 
 __Checking RDS DB Connectivity:__
@@ -101,3 +113,7 @@ __Checking RDS DB Connectivity:__
 * __AWS S3 :__  This service is responsible to store the Object data(Files) in the S3 buckets.
 
 ![alt text](image-7.png)
+
+__<mark>NOTE:__ For connecting with databases , __programmatic access__ is not required. we can directly connect with the database via __DB end point URL(host)  , port , uname and password.__
+
+__<MARK> NOTE:__ for __S3 communication__ , access keys are required ,__RDS communication__ access keys are not required.
