@@ -35,7 +35,7 @@ AWS provides multiple ways to configure and manage infrastructure in the cloud.
 
 	* __Secret Key :__ 2kAO0/xcMycCzWqBhqCTLSkIIq
 
-__NOTE:__  Not recommended to use root user access keys.
+__<mark>NOTE:  Not recommended to create the Access Key & Secret Key for the root account . Instead of that we should create the IAM user.__</mark>
 
 * Download and Install AWS CLI s/w	
 
